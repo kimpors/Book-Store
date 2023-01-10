@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+using Book_Store.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connection = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<BookDbContext>(options =>
+    options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
 var app = builder.Build();
 
@@ -22,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Book}/{action=Index}/{id?}");
 
 app.Run();
