@@ -15,7 +15,7 @@ public class BookController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return View(_db.Books);
     }
 
     public IActionResult Login()

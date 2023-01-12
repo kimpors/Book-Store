@@ -1,5 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Book>
+@{
+    ViewData["title"] = "home page";
 }
 
-<h1>Hello there</h1>
+@foreach(Book book in Model)
+{
+    <div class="border container">
+        <div class="row justify-content-between">
+            <div class="col-2 card" style="width: 11rem">
+                <img src="/wwwroot/img/img.png" class="card-img-top">
+            </div>
+            <div class="border col-8 m-1 scrollspy-example"  style="overflow-y: scroll; position: relative; height: 150px;" data-bs-spy="scroll" data-bs-offset="0" tabindex="0">
+                @book.Description
+                <hr>
+                lorem ipsum dolor sit amet, consectetur adipisicing elit. perferendis, maiores nemo aperiam commodi mollitia, consequuntur atque accusantium ullam placeat aliquam recusandae minus perspiciatis a, aspernatur saepe temporibus facilis aut rem.
+                lorem ipsum dolor sit amet consectetur adipisicing elit. ipsa officia quia architecto tempore tempora nobis, sapiente fugit, exercitationem minus esse natus. doloribus illum commodi doloremque sit odit aut placeat facere.
+                lorem ipsum dolor sit amet consectetur, adipisicing elit. eum commodi maxime quisquam laboriosam quos reiciendis, delectus pariatur obcaecati similique incidunt ipsam nostrum placeat, voluptatem voluptatum, ex architecto debitis eveniet explicabo.
+                lorem ipsum dolor sit amet consectetur, adipisicing elit. atque et temporibus voluptatibus deleniti recusandae? soluta, beatae vel. quas voluptates quasi modi, dolor ratione sequi voluptas laborum rem tenetur eveniet reiciendis.
+            </div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-sm-12 my-1">
+                <button type="button" class="btn btn-outline-primary">
+                    Add
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#morecollapse" aria-expanded="false" aria-controls="morecollapse">
+                    More
+                </button>
+            </div>
+
+        </div>
+        <div class="row collapse" id="morecollapse">
+            <div class="card card-body">
+                <div>
+                    Name:
+                    <strong>@book.Name</strong>
+                </div>
+                <div>
+                    Author
+                    <strong>@book.Author</strong>
+                </div>
+                <div>
+                    Price
+                    <strong>@book.Price</strong>
+                </div>
+                <div>
+                    Published
+                    <strong>@book.Published</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+}
