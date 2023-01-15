@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Book_Store.Models;
 using Book_Store.Data;
 
@@ -19,11 +20,6 @@ public class BookController : Controller
     }
 
     public IActionResult Login()
-    {
-        return View();
-    }
-
-    public IActionResult Purchase()
     {
         return View();
     }

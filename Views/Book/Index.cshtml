@@ -21,9 +21,9 @@
         </div>
         <div class="row justify-content-start">
             <div class="col-sm-12 my-1">
-                <button type="button" class="btn btn-outline-primary">
+                <a class="btn btn-outline-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@book.Id">
                     Add
-                </button>
+                </a>
                 <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#morecollapse" aria-expanded="false" aria-controls="morecollapse">
                     More
                 </button>
