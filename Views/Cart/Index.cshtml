@@ -19,6 +19,15 @@
                 <td class="text-right">
                     @((line.Quantity * line.Book.Price).ToString("c"))
                 </td>
+                <td>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="Id"
+                            value="@line.Book.Id">
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-lg btn-close"></button>
+                        </div>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -31,3 +40,5 @@
         </tr>
     </tfoot>
 </table>
+<a class="btn btn-primary" asp-controller="Book" asp-action="Index">Continue Shoping</a>
+<a class="btn btn-secondary" asp-controller="Book" asp-action="Index">Check out</a>

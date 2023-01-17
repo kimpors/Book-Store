@@ -15,6 +15,7 @@ public class CartController : Controller
     {
         _db = db;
     }
+
     public IActionResult AddToCart(int id)
     {
         Book book = _db.Books
@@ -27,7 +28,7 @@ public class CartController : Controller
             SaveCart(cart);
         }
 
-        return RedirectToAction("Index", "Book");
+        return RedirectToAction("Index", "Cart");
     }
 
     public ViewResult Index()
