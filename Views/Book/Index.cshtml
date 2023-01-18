@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Book>
 @{
     ViewData["title"] = "home page";
-    int count = 1;
+    int quantity = 1;
 }
 
 @foreach(Book book in Model)
@@ -23,7 +23,7 @@
         </div>
         <div class="row justify-content-start">
             <div class="col-sm-12 my-1">
-                <a class="btn btn-outline-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@book.Id">
+                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">
                     Add
                 </a>
                 <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#morecollapse" aria-expanded="false" aria-controls="morecollapse">
@@ -52,5 +52,43 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addModalLabel">Order</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-controller="Cart" asp-action="AddToCart">
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@book.Name</td>
+                                        <td>
+                                            <input type="hidden" name="id" value="@book.Id">
+                                            <input style="width: 100px;" type="number" name="quantity" value="@quantity">
+                                        </td>
+                                        <td>@book.Price.ToString("c")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 }

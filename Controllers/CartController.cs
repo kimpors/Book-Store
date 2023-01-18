@@ -16,7 +16,7 @@ public class CartController : Controller
         _db = db;
     }
 
-    public IActionResult AddToCart(int id)
+    public IActionResult AddToCart(int id, int quantity)
     {
         Book book = _db.Books
             .FirstOrDefault(p => p.Id == id);
@@ -24,7 +24,7 @@ public class CartController : Controller
         if (book != null)
         {
             Cart cart = GetCart();
-            cart.AddItem(book, 1);
+            cart.AddItem(book, quantity);
             SaveCart(cart);
         }
 
